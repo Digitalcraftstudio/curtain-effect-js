@@ -1,0 +1,29 @@
+<script>
+  $(document).ready(function () {
+        var $curtainopen = false;
+
+        $(".rope.nopull").click(function (event) {
+          event.preventDefault();
+          console.log("Rope clicked but not pulled");
+        });
+
+        $(".rope:not(.nopull)").click(function () {
+          if (!$curtainopen) {
+            console.log("Rope clicked and pulled");
+            $curtainopen = true;
+
+            // Open the curtain
+            $(".rope").stop().animate({ top: '0px' }, { queue: false, duration: 350, easing: 'easeOutBounce' });
+            $(".leftcurtain").stop().animate({ width: '0px' }, 2000);
+            $(".rightcurtain").stop().animate({ width: '0px' }, 2000);
+
+            // Fade out the curtain after 3 seconds (adjust as needed)
+            setTimeout(function () {
+              $(".rope").slideUp();
+              $(".leftcurtain").fadeOut();
+              $(".rightcurtain").fadeOut();
+            }, 3000);
+          }
+        });
+      });
+</script>
