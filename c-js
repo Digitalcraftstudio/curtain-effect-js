@@ -1,5 +1,6 @@
 <script>
-  $(document).ready(function () {
+  <script type="text/javascript">
+       $(document).ready(function () {
         var $curtainopen = false;
 
         $(".rope.nopull").click(function (event) {
@@ -26,4 +27,156 @@
           }
         });
       });
-</script>
+     
+      window.jqs = jqs;
+      var name = decodeURI(jqs("bl"));
+      if (typeof jqs("bl") === "undefined") {
+        name = "";
+      }
+      var checkName = function () {
+        if (name.length !== 0) {
+          name = name.replace(/-/g, " ");
+          console.log("name is there", name);
+          document.querySelector("#digitalcraft-show-name").innerHTML = name;
+          document.querySelector("#digitalcraft-fromMessage").innerHTML = "Greeting You";
+        } else {
+        }
+      };
+
+      checkName();
+
+      var createGreeting = function () {
+        gtag('event', 'click', {
+          'event_category': 'interaction',
+          'event_label': 'goButtonClicked',
+        });
+
+        sname = document.querySelector("#nameTextBox").value;
+        sname = sname.replace(/@/g, "-");
+        sname = sname.replace(/%40/g, "-");
+        sname = sname.replace(/\./g, "-");
+        if (sname.trim() != "") {
+          document.querySelector("#formBox").style.display = "none";
+          document.querySelector(".footerbtn").style.display = "block";
+          document.querySelector("#digitalcraft-show-name").innerHTML = sname;
+          document.querySelector("#digitalcraft-fromMessage").innerHTML = "Greeting You";
+          window.scrollTo(0, 0);
+        } else {
+          alert("Please Type Your Name First");
+          document.getElementById("nameTextBox").focus();
+        }
+      };
+
+      var shareActionWA = function () {
+        gtag('event', 'click', {
+          'event_category': 'interaction',
+          'event_label': 'shareOnWhatsAppClicked',
+        });
+
+        var shareString = "";
+        var whatsappHref;
+        shareString += "*" + sname + "*";
+
+        shareString +=
+          "To see special invitation for you. click on the blue line%0A👉";
+        shareString += (window.location.href.split("?")[0] + "?bl=" + sname).replace("#", "").replace(/ /g, "-");
+
+        whatsappHref = "whatsapp://send?text=" + shareString;
+        window.location.href = whatsappHref;
+      };
+
+      var countDownDate = new Date("14 dec 2024 00:00:00").getTime();
+
+      // Update the count down every 1 second
+      var x = setInterval(function () {
+        // Get todays date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now an the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("demoo").innerHTML = days + "days " + hours + "hr " + minutes + "min " + seconds + "sec ";
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("demoo").innerHTML = "Countdown Finished!";
+          document.getElementById("inAdvance").innerHTML = "";
+        }
+      }, 1000);
+
+      // Set the date we're counting down to
+      var countDownDate = new Date("14 dec 2024 00:00:00").getTime();
+
+      // Update the count down every 01 second
+      var x = setInterval(function () {
+        // Get todays date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now an the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="digitalcraft"
+        document.getElementById("digitalcraft").innerHTML = days + "<i> Days,</i> " + hours + " <i>Hrs,</i> " + minutes + "<i> Min,</i> " + seconds + "<i> Sec</i> ";
+
+        // If the count down is finished, write some text
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("digitalcraft").innerHTML = "Today Function";
+        }
+      }, 1000);
+      
+      var slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+          var i;
+          var slides = document.getElementsByClassName("DigitalCraftlides");
+          var dots = document.getElementsByClassName("DigitalCraftdot");
+          for (i = 0; i < slides.length; i++) {
+             slides[i].style.display = "none";  
+          }
+          slideIndex++;
+          if (slideIndex > slides.length) {slideIndex = 1}    
+          for (i = 0; i < dots.length; i++) {
+              dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";  
+          dots[slideIndex-1].className += " active";
+          setTimeout(showSlides, 3000); // Change image every 3 seconds
+      }
+      
+      var isNS = (navigator.appName == "Netscape") ? 1 : 0;
+      if(navigator.appName == "Netscape") document.captureEvents(Event.MOUSEDOWN||Event.MOUSEUP);
+      function mischandler(){
+        return false;
+      }
+      function mousehandler(e){
+        var myevent = (isNS) ? e : event;
+        var eventbutton = (isNS) ? myevent.which : myevent.button;
+        if((eventbutton==2)||(eventbutton==3)) return false;
+      }
+      document.oncontextmenu = mischandler;
+      document.onmousedown = mousehandler;
+      document.onmouseup = mousehandler;
+    </script>
+    <script src="https://www.googletagmanager.com/gtag/js?id=UA--1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'UA--1');
+    </script>
