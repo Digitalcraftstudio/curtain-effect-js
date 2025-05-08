@@ -1,44 +1,6 @@
 <style>
   }
-      .leftcurtain {
-        width: 54%;
-        height: 1650px;
-        top: 0px;
-        left: 0px;
-        position: absolute;
-        z-index: 2;
-        overflow: hidden;
-      }
-      .rightcurtain {
-        width: 46%;
-        height: 1650px;
-        right: 0px;
-        top: 0px;
-        position: absolute;
-        z-index: 3;
-        overflow: hidden;
-      }
-      .rightcurtain img,
-      .leftcurtain img {
-        width: 100%;
-        height: 100%;
-      }
-      .logo {
-        margin: 0px auto;
-        margin-top: 150px;
-      }
-      .rope {
-        position: absolute;
-        top: 0px;
-        left: 20, 70%;
-        width: 100px;
-        z-index: 4;
-        overflow: hidden;
-        animation: marqueeAnimation 5s linear infinite;
-      }
-      .rope img {
-        width: 80%;
-      }
+     
       .nopull {
         cursor: default;
       }
